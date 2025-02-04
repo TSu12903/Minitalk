@@ -1,52 +1,34 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
-NAME = Minitalk
+NAME_CLIENT = client
+NAME_SERVER = server
 
-LIBFT = Library/libft/libft.a
 LIB = Library/libft
+LIBFT = $(LIB)/libft.a
 
-SRC = Mandatory/
 
-SRC_BONUS = bonus/
+all: $(NAME_CLIENT) $(NAME_SERVER)
 
-OBJDIR = obj
+$(NAME_CLIENT): $(LIBFT)
+	@$(CC) $(CFLAGS) Mandatory/client.c -L$(LIB) -lft -o $(NAME_CLIENT)
+	@echo "✔ GOOD $(NAME_CLIENT)"
 
-OBJ = $(addprefix $(OBJDIR)/,$(SRC:.c=.o))
-OBJ_BONUS = $(addprefix $(OBJDIR)/,$(SRC_BONUS:.c=.o))
-
-all: $(NAME)
-
-$(NAME): $(OBJ) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
-	@echo "✔ GOOD $(NAME)"
-
-bonus: $(OBJ_BONUS) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBFT) -o $(NAME)
-	@echo "✔ GOOD $(NAME)"
-
-$(OBJDIR)/%.o: %.c | $(OBJDIR)
-	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJDIR):
-	@mkdir -p $(OBJDIR)
+$(NAME_SERVER): $(LIBFT)
+	@$(CC) $(CFLAGS) Mandatory/serveur.c -L$(LIB) -lft -o $(NAME_SERVER)
+	@echo "✔ GOOD $(NAME_SERVER)"
 
 $(LIBFT):
 	@$(MAKE) -C $(LIB) -s
 
-$(MLX):
-	@$(MAKE) -C $(MLXDIR) -s
-
 clean:
-	@rm -rf $(OBJDIR)
 	@$(MAKE) -C $(LIB) clean
 	@echo "Cleaned objects"
 
 fclean: clean
-	@rm -f $(NAME) $(BONUS)
+	@rm -f $(NAME_CLIENT) $(NAME_SERVER)
 	@$(MAKE) -C $(LIB) fclean
 	@echo "Full clean done"
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

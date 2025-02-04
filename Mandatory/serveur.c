@@ -6,8 +6,14 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:43:32 by tcybak            #+#    #+#             */
-/*   Updated: 2025/02/03 17:12:59 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/02/04 13:49:25 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+int main(void)
+{
+    ft_printf("Mon PID est : %d\n", getpid());
+    return 0;
+}
