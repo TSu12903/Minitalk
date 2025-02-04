@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:43:32 by tcybak            #+#    #+#             */
-/*   Updated: 2025/02/04 13:49:25 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/02/04 15:49:47 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,8 @@
 int main(void)
 {
     ft_printf("Mon PID est : %d\n", getpid());
-    return 0;
+    pause();
+    if (pause() == -1)
+        return (0);
+    return (0);
 }
