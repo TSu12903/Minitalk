@@ -2,6 +2,7 @@
     "files.associations": {
         "stdlib.h": "c",
         "unistd.h": "c",
-        "sstream": "c"
+        "sstream": "c",
+        "signal.h": "c"
     }
 }
