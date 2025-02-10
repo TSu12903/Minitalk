@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:38:45 by tcybak            #+#    #+#             */
-/*   Updated: 2025/02/07 15:07:09 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/02/10 13:00:03 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void    convert_Ascii(char character, int pid)
 		else
 			kill(pid, SIGUSR2);
 		i--;
-		usleep(800);
+		usleep(500);
 	}
 }
 
@@ -55,7 +55,7 @@ int main(int ac, char **av)
 	while (i > 0)
 	{
 		kill(pid_serveur, SIGUSR1);
-		usleep(800);
+		usleep(500);
 		i--;
 	}
 	return (0);
