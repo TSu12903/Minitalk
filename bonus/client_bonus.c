@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:38:45 by tcybak            #+#    #+#             */
-/*   Updated: 2025/02/10 16:30:22 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/02/10 17:47:26 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ static void	convert_ascii(char character, int pid)
 	}
 }
 
+static void	signal_handler(int signal)
+{
+	if (signal != SIGUSR1)
+		exit (1);
+}
+
 int	main(int ac, char **av)
 {
 	int	pid_serveur;
@@ -49,8 +55,12 @@ int	main(int ac, char **av)
 	while (av[2][i])
 	{
 		convert_ascii(av[2][i], pid_serveur);
+		signal(SIGUSR1, signal_handler);
 		i++;
 	}
 	convert_ascii('\0', pid_serveur);
 	return (0);
 }
+
+
+
